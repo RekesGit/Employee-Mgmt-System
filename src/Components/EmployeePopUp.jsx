@@ -30,7 +30,7 @@ const EmployeePopUp = (props) => {
         "Content-type": "application/json; charset=UTF-8",
       },
     };
-    fetch("http://localhost:3001/employee", options).then(async (response) => {
+    fetch("/api/v1/create", options).then(async (response) => {
       console.log("response save", response);
       let res = await response.json();
       console.log(res);

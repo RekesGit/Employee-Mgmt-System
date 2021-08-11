@@ -5,17 +5,17 @@ import AboutUs from "./Components/AboutUs";
 import { Route, Switch } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import Employee from "./Components/Employee";
-import Home from "./Components/Home";
+import NotFound from "./Components/NotFound";
 
 function App() {
   return (
     <>
       <Header />
       <Switch>
-        <Route path="/login" component={Login} />
-        <Route path="/" exact component={Home} />
-        <Route path="/employee" exact component={Employee} />
-        <Route path="/aboutus" component={AboutUs} />
+        <Route path="/" exact component={Login} />
+        <ProtectedRoute path="/employee" exact component={Employee} />
+        <ProtectedRoute path="/aboutus" component={AboutUs} />
+        <Route component={NotFound} />
       </Switch>
     </>
   );

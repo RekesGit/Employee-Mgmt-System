@@ -1,15 +1,15 @@
 import logo from "./user.svg";
 import "./Login.css";
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 
-const Login = (props) => {
+const Login = () => {
   let [user, setUser] = useState({
     login: "",
     password: "",
   });
 
-  let history = useHistory();
+  const history = useHistory();
 
   const handleChange = (event) => {
     setUser({ ...user, [event.target.name]: event.target.value });
@@ -17,18 +17,17 @@ const Login = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(event);
-    console.log(user);
-    props.login(user.login);
-    // localStorage.setItem("user", user.login);
-    // history.push({ pathname: "aboutus", data: user });
+    // console.log(event);
+    // console.log(user);
+    localStorage.setItem("user", user.login);
+    history.push({ pathname: "employee", data: user });
   };
 
   useEffect(() => {
     if (localStorage.getItem("user")) {
-      history.push("aboutus");
+      history.push("employee");
     }
-  }, []);
+  }, [history]);
 
   return (
     <>

@@ -13,10 +13,10 @@ const Employee = () => {
   const [deleteId, setDeleteId] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3001/employee").then((response) => {
+    fetch("/api/v1/employees").then((response) => {
       response.json().then((data) => {
         console.log("data", data);
-        setEmployee(data);
+        setEmployee(data.data);
         // console.log("employee", employee);
       });
     });
@@ -38,7 +38,7 @@ const Employee = () => {
 
   const save = (newEmp) => {
     console.log("newEmp", newEmp);
-    let newEmpList = [...employee, newEmp];
+    let newEmpList = [...employee, newEmp.data];
     console.log("newEmpList", newEmpList);
     setEmployee(newEmpList);
   };
